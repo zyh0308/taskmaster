@@ -3,9 +3,12 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +37,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // hit button and go to setting page
 
+        Button goToSettingPage=findViewById(R.id.setting);
+        goToSettingPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToSettingPageIntent=new Intent(MainActivity.this, Setting.class);
+                MainActivity.this.startActivity(goToSettingPageIntent);
+            }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        SharedPreferences p= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String username=p.getString("usename","default");
+        TextView showusername=findViewById(R.id.mainpageusername);
+        showusername.setText(username+ " 's Tasks");
     }
 }
