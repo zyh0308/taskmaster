@@ -13,9 +13,9 @@
         android:text="Add Task"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="85dp" />
+        tools:layout_editor_absoluteY="84dp" />
 
     <EditText
         android:id="@+id/editText"

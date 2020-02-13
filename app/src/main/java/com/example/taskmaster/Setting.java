@@ -21,22 +21,18 @@ public class Setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
 
-
-
-
-
-
         //hit save button to go back to home pages
         Button saveUserName=findViewById(R.id.saveusername);
         saveUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //store username using sharedpreferences
                EditText inputUsername = findViewById(R.id.username);
                 String username=inputUsername.getText().toString();
                 SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor=p.edit();
                 editor.putString("username",username);
-                editor.commit();
+                editor.apply();
                 Intent saveUserNameIntent=new Intent(Setting.this, MainActivity.class);
                Setting.this.startActivity(saveUserNameIntent);
 
