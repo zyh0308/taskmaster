@@ -52,39 +52,39 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //hit button and go to task detail page
-
-        final Button goToTaskOneDetailPage=findViewById(R.id.taskone);
-        goToTaskOneDetailPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToTaskOneDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
-                goToTaskOneDetailPageIntent.putExtra("task",goToTaskOneDetailPage.getText().toString());
-                MainActivity.this.startActivity(goToTaskOneDetailPageIntent);
-            }
-        });
-
-        final Button goToTaskTwoDetailPage=findViewById(R.id.tasktwo);
-        goToTaskTwoDetailPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToTaskTwoDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
-                goToTaskTwoDetailPageIntent.putExtra("task",goToTaskTwoDetailPage.getText().toString());
-                MainActivity.this.startActivity(goToTaskTwoDetailPageIntent);
-            }
-        });
-
-        final Button goToTaskThreeDetailPage=findViewById(R.id.taskthree);
-        goToTaskThreeDetailPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToTaskThreeDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
-                goToTaskThreeDetailPageIntent.putExtra("task",goToTaskThreeDetailPage.getText().toString());
-
-                MainActivity.this.startActivity(goToTaskThreeDetailPageIntent);
-            }
-        });
-
-
+//
+//        final Button goToTaskOneDetailPage=findViewById(R.id.taskone);
+//        goToTaskOneDetailPage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent goToTaskOneDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
+//                goToTaskOneDetailPageIntent.putExtra("task",goToTaskOneDetailPage.getText().toString());
+//                MainActivity.this.startActivity(goToTaskOneDetailPageIntent);
+//            }
+//        });
+//
+//        final Button goToTaskTwoDetailPage=findViewById(R.id.tasktwo);
+//        goToTaskTwoDetailPage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent goToTaskTwoDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
+//                goToTaskTwoDetailPageIntent.putExtra("task",goToTaskTwoDetailPage.getText().toString());
+//                MainActivity.this.startActivity(goToTaskTwoDetailPageIntent);
+//            }
+//        });
+//
+//        final Button goToTaskThreeDetailPage=findViewById(R.id.taskthree);
+//        goToTaskThreeDetailPage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent goToTaskThreeDetailPageIntent=new Intent(MainActivity.this, TaskDetail.class);
+//                goToTaskThreeDetailPageIntent.putExtra("task",goToTaskThreeDetailPage.getText().toString());
+//
+//                MainActivity.this.startActivity(goToTaskThreeDetailPageIntent);
+//            }
+//        });
+//
+//
 
 
 
