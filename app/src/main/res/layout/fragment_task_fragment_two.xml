@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    tools:context=".TaskFragmentTwo">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/tasktitle"
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:text="@android:string/VideoView_error_title" />
+
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:text="Body" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+</LinearLayout>

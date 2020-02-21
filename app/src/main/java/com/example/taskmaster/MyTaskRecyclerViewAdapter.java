@@ -36,12 +36,27 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_task, parent, false);
+                .inflate(R.layout.fragment_task_fragment_two, parent, false);
+        //TODO:ADDING CLICKS
+      final ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onTaskInteraction(viewHolder.mItem);
+
+            }
+        });
+
+
+
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
+        //TODO:MODIFY DATA
         holder.mItem = mValues.get(position);
         holder.mTitleView.setText(mValues.get(position).getTitle());
         holder.mBodyView.setText(mValues.get(position).getBody());
@@ -70,6 +85,7 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
         return mValues.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mTitleView;
@@ -91,4 +107,9 @@ public class MyTaskRecyclerViewAdapter extends RecyclerView.Adapter<MyTaskRecycl
             return super.toString() + " '" + mBodyView.getText() + "'";
         }
     }
+    public interface OnListFragmentInteractionListener {
+        void onTaskInteraction(Task task);
+
+    }
+
 }
