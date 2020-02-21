@@ -73,15 +73,17 @@ public class TaskFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            List<Task>listOfTasks=new LinkedList<>();
-            listOfTasks.add(new Task("clean the house","cleaning","assigned"));
-            listOfTasks.add(new Task("do the laundry","landury","complete"));
-            listOfTasks.add(new Task("cook dinner","cooking","inprogress"));
-            listOfTasks.add(new Task("work on lab","working","new"));
-            listOfTasks.add(new Task("clean the house","cleaning","assigned"));
-            listOfTasks.add(new Task("do the laundry","landury","complete"));
-            listOfTasks.add(new Task("cook dinner","cooking","inprogress"));
-            listOfTasks.add(new Task("work on lab","working","new"));
+
+
+            List<Task>listOfTasks=MainActivity.db.taskDao().getTasks();
+//            listOfTasks.add(new Task("clean the house","cleaning","assigned"));
+//            listOfTasks.add(new Task("do the laundry","landury","complete"));
+//            listOfTasks.add(new Task("cook dinner","cooking","inprogress"));
+//            listOfTasks.add(new Task("work on lab","working","new"));
+//            listOfTasks.add(new Task("clean the house","cleaning","assigned"));
+//            listOfTasks.add(new Task("do the laundry","landury","complete"));
+//            listOfTasks.add(new Task("cook dinner","cooking","inprogress"));
+//            listOfTasks.add(new Task("work on lab","working","new"));
 
             recyclerView.setAdapter(new MyTaskRecyclerViewAdapter(listOfTasks, null));
         }

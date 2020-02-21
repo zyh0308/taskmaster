@@ -1,6 +1,16 @@
 package com.example.taskmaster;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity
+
 public class Task {
+    @PrimaryKey (autoGenerate = true)
+           public long id;
+
+
     String body;
     String title;
     String state;
@@ -9,6 +19,11 @@ public class Task {
         this.body = body;
         this.title = title;
         this.state = state;
+    }
+
+    @Ignore
+    public Task(){
+
     }
 
     public String getBody() {

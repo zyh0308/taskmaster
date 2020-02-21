@@ -5,9 +5,10 @@
     android:id="@+id/list"
     android:name="com.example.taskmaster.TaskFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".TaskFragment"
-    tools:listitem="@layout/fragment_task" />
+    tools:listitem="@layout/fragment_task_fragment_two"
+    tools:visibility="visible" />
