@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TaskDetail extends AppCompatActivity {
 
@@ -22,5 +23,6 @@ public class TaskDetail extends AppCompatActivity {
         String titleTask = getIntent().getStringExtra("mTitleView");
         tasktitle.setText(titleTask);
     }
+
 
 }

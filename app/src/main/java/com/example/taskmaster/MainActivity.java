@@ -1,5 +1,6 @@
 package com.example.taskmaster;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,22 +9,38 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.amazonaws.amplify.generated.graphql.ListTasksQuery;
+import com.amazonaws.mobile.config.AWSConfiguration;
+import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
+import com.apollographql.apollo.GraphQLCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
+
 import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 public class MainActivity extends AppCompatActivity implements MyTaskRecyclerViewAdapter.OnListFragmentInteractionListener{
 
     static AppDatabase db;
+    private AWSAppSyncClient mAWSAppSyncClient;
+
 
     private String TAG = "zyihang.main";
     List<Task> listOfTasks;
+    MyTaskRecyclerViewAdapter adapter ;
 
 
 
@@ -83,7 +100,18 @@ public class MainActivity extends AppCompatActivity implements MyTaskRecyclerVie
 //
 //
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyTaskRecyclerViewAdapter(listOfTasks, this));
+
+        adapter=new MyTaskRecyclerViewAdapter(listOfTasks, this);
+        recyclerView.setAdapter(adapter);
+
+
+
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
+                .build();
+
+        runQuery();
 
         //hit button and go to task detail page
 //
@@ -123,6 +151,46 @@ public class MainActivity extends AppCompatActivity implements MyTaskRecyclerVie
 
 
     }
+
+    public void runQuery(){
+        mAWSAppSyncClient.query(ListTasksQuery.builder().build())
+                .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
+                .enqueue(tasksCallback);
+    }
+
+    private GraphQLCall.Callback<ListTasksQuery.Data> tasksCallback = new GraphQLCall.Callback<ListTasksQuery.Data>() {
+        @Override
+        public void onResponse(@Nonnull final Response<ListTasksQuery.Data> response) {
+            Log.i("zhang", response.data().listTasks().items().toString());
+            Handler handler=new Handler(Looper.getMainLooper()){
+                @Override
+                public void handleMessage(@NonNull Message msg) {
+                    super.handleMessage(msg);
+                    List<ListTasksQuery.Item> tasks=response.data().listTasks().items();
+
+                    listOfTasks.clear();
+
+                    for (ListTasksQuery.Item taskFromDyno: tasks) {
+                        listOfTasks.add(new Task(taskFromDyno));
+
+
+                    }
+                    adapter.notifyDataSetChanged();
+
+
+                }
+
+            };
+
+            handler.obtainMessage().sendToTarget();
+
+        }
+
+        @Override
+        public void onFailure(@Nonnull ApolloException e) {
+            Log.e("ERROR", e.toString());
+        }
+    };
 
     @Override
     protected void onStart() {
