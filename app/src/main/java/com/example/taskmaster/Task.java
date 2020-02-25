@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.amazonaws.amplify.generated.graphql.ListTasksQuery;
+
 @Entity
 
 public class Task {
@@ -19,6 +21,12 @@ public class Task {
         this.body = body;
         this.title = title;
         this.state = state;
+    }
+
+    public Task(ListTasksQuery.Item stuffFromDyno){
+        this.title = stuffFromDyno.title();
+        this.body=stuffFromDyno.body();
+        this.state=stuffFromDyno.state();
     }
 
     @Ignore
