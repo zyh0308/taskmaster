@@ -1,7 +1,7 @@
 # taskmaster
 
-![home page](src/main/res/screenshots/all tasks.png)
+![home page](../screenshots/home.png)
 <hr>
-![add task page](screenshots/add tasks.png)
+![add task page](../screenshots/addtasks.png)
 <hr>
-![all tasks page](screenshots/all tasks.png)
+![all tasks page](../screenshots/alltasks.png)
