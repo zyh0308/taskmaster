@@ -34,3 +34,10 @@ The all tasks page should just be an image with a back button; it needs no funct
 
 <br>
 ## Lab: 36 - Data in TaskMaster
+Sign in page
+![signin page](screenshots/signin.png)
+
+Sign out button works on Main page
+![signout page](screenshots/sign out.png)
+
+
