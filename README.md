@@ -42,7 +42,14 @@ Modified my Add Task form to save the data entered in as a Task to DynamoDB.
 ![addtask page](screenshots/34dy.png)
 
 
-
 Homepage
 Refactored my homepage’s RecyclerView to display all Task entities in DynamoDB.
 ![home page](screenshots/34.png)
+
+<br>
+## Lab: 36 - Data in TaskMaster
+Sign in page 
+
+![signin page](screenshots/signin.png)
+Sign out button works on Main page 
+![signout page](screenshots/signout.png)
