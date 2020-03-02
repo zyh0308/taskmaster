@@ -117,6 +117,23 @@ public class MainActivity extends AppCompatActivity implements MyTaskRecyclerVie
 
         runQuery();
 
+        //sign out
+
+        Button signOutButton=findViewById(R.id.signout);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AWSMobileClient.getInstance().signOut();
+
+                MainActivity.this.startActivity(new Intent(MainActivity.this, MainActivity.class));
+
+
+
+
+            }
+        });
+
+
         //hit button and go to task detail page
 //
 //        final Button goToTaskOneDetailPage=findViewById(R.id.taskone);
