@@ -31,3 +31,6 @@ The all tasks page should just be an image with a back button; it needs no funct
 
 ### All Tasks Page
 ![detail page](screenshots/lab27detail.png)
+
+<br>
+## Lab: 36 - Data in TaskMaster
